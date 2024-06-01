@@ -1,8 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.BotaniPal" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.BotaniPal" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary_500</item>
+        <item name="colorPrimaryVariant">@color/primary_700</item>
+        <item name="colorPrimarySurface">@color/surface</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/secondary_500</item>
+        <item name="colorSecondaryVariant">@color/secondary_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
+        <item name="android:toolbarStyle">?attr/colorOnPrimary</item>
+        <item name="android:actionBarTheme">?attr/colorOnPrimary</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Theme.BotaniPal" parent="Base.Theme.BotaniPal" />

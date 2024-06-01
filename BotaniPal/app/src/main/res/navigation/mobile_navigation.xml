@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.botanipal.botanipal.ui.chat.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/navigation_price"
+        android:name="com.botanipal.botanipal.ui.price.PriceFragment"
+        android:label="Price"
+        tools:layout="@layout/fragment_price" >
+        <action
+            android:id="@+id/action_navigation_price_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_price_to_navigation_bookmark"
+            app:destination="@id/navigation_bookmark" />
+        <action
+            android:id="@+id/action_navigation_price_to_navigation_scanner"
+            app:destination="@id/navigation_scanner" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.botanipal.botanipal.ui.home.HomeFragment"
+        android:label="BotaniPal"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_price"
+            app:destination="@id/navigation_price" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_scanner"
+            app:destination="@id/navigation_scanner" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_bookmark"
+            app:destination="@id/navigation_bookmark" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_scanner"
+        android:name="com.botanipal.botanipal.ui.scan.ScannerFragment"
+        android:label="Scan"
+        tools:layout="@layout/fragment_scanner" >
+        <action
+            android:id="@+id/action_navigation_scanner_to_navigation_bookmark"
+            app:destination="@id/navigation_bookmark" />
+        <action
+            android:id="@+id/action_navigation_scanner_to_navigation_price"
+            app:destination="@id/navigation_price" />
+        <action
+            android:id="@+id/action_navigation_scanner_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_bookmark"
+        android:name="com.botanipal.botanipal.ui.bookmark.BookmarkFragment"
+        android:label="Bookmark"
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_navigation_bookmark_to_navigation_price"
+            app:destination="@id/navigation_price" />
+        <action
+            android:id="@+id/action_navigation_bookmark_to_navigation_scanner"
+            app:destination="@id/navigation_scanner" />
+        <action
+            android:id="@+id/action_navigation_bookmark_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+</navigation>
