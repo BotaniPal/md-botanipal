@@ -20,22 +20,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navBottomView: BottomNavigationView = binding.bottomNavigationView
-//        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_chat,
-//                R.id.navigation_price,
-//                R.id.navigation_home,
-//                R.id.navigation_scanner,
-//                R.id.navigation_bookmark
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_chat,
+                R.id.navigation_price,
+                R.id.navigation_home,
+                R.id.navigation_scanner,
+                R.id.navigation_bookmark
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        navBottomView.setupWithNavController(navController)
+//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+//        val navController = navHostFragment.navController
+//
 //        navBottomView.setupWithNavController(navController)
-    }
+        navBottomView.setupWithNavController(navController)
+    } 
 }
