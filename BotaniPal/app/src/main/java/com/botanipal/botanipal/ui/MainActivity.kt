@@ -1,6 +1,8 @@
 package com.botanipal.botanipal.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -37,5 +39,28 @@ class MainActivity : AppCompatActivity() {
 //
 //        navBottomView.setupWithNavController(navController)
         navBottomView.setupWithNavController(navController)
-    } 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.navigation_settings -> {
+                // Handle settings
+                return true
+            }
+            R.id.navigation_account -> {
+                // Handle settings
+                return true
+            }
+            R.id.navigation_receipt-> {
+                // Handle settings
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
