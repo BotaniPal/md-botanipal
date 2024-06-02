@@ -25,16 +25,16 @@ class TabViewModel : ViewModel() {
     fun searchTopics() {
         _isLoadingTopics.value = true
         _topic.value = listOf(
-            Topics("How to grow corn", "Learn how to grow corn in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow wheat", "Learn how to grow wheat in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow rice", "Learn how to grow rice in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow beans", "Learn how to grow beans in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow sugar", "Learn how to grow sugar in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow coffee", "Learn how to grow coffee in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow tea", "Learn how to grow tea in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow potatoes", "Learn how to grow potatoes in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow corn", "Learn how to grow corn in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
-            Topics("How to grow wheat", "Learn how to grow wheat in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time)),
+            Topics("How to grow corn", "Learn how to grow corn in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow wheat", "Learn how to grow wheat in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow rice", "Learn how to grow rice in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow beans", "Learn how to grow beans in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow sugar", "Learn how to grow sugar in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow coffee", "Learn how to grow coffee in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow tea", "Learn how to grow tea in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow potatoes", "Learn how to grow potatoes in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow corn", "Learn how to grow corn in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
+            Topics("How to grow wheat", "Learn how to grow wheat in your backyard", Timestamp(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse("2024-01-04 15:00:00")!!.time), false),
         )
         _isLoadingTopics.value = false
     }
