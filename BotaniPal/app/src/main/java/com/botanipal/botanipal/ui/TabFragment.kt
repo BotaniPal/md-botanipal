@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.adapter.ChatanisAdapter
 import com.botanipal.botanipal.adapter.ForumAdapter
-import com.botanipal.botanipal.data.Topics
+import com.botanipal.botanipal.data.model.Topics
 import com.botanipal.botanipal.databinding.FragmentTabBinding
 import com.botanipal.botanipal.ui.chat.forums.ForumsActivity
 

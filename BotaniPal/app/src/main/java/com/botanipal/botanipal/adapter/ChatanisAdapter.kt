@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.botanipal.botanipal.data.ChaTanis
-import com.botanipal.botanipal.data.Topics
+import com.botanipal.botanipal.data.model.ChaTanis
 import com.botanipal.botanipal.databinding.TopicItemBinding
 import com.botanipal.botanipal.helper.ChaTanisDiffCallback
-import com.botanipal.botanipal.helper.TopicsDiffCallback
 
 class ChatanisAdapter (private var chaTanis: List<ChaTanis>) : RecyclerView.Adapter<ChatanisAdapter.ListViewHolder>() {
     inner class ListViewHolder(private val binding: TopicItemBinding) : RecyclerView.ViewHolder(binding.root) {

@@ -1,7 +1,7 @@
 package com.botanipal.botanipal.helper
 
 import androidx.recyclerview.widget.DiffUtil
-import com.botanipal.botanipal.data.Commodity
+import com.botanipal.botanipal.data.model.Commodity
 
 class CommodityDiffCallback(private val oldList: List<Commodity>, private val newList: List<Commodity>) : DiffUtil.Callback(){
     override fun getOldListSize(): Int = oldList.size

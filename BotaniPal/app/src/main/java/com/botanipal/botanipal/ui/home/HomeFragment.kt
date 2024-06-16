@@ -17,12 +17,11 @@ import com.botanipal.botanipal.BuildConfig
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.adapter.ForumAdapter
 import com.botanipal.botanipal.adapter.TopCommodityAdapter
-import com.botanipal.botanipal.data.Commodity
-import com.botanipal.botanipal.data.Topics
+import com.botanipal.botanipal.data.model.Commodity
+import com.botanipal.botanipal.data.model.Topics
 import com.botanipal.botanipal.data.api.ApiConfig
-import com.botanipal.botanipal.data.api.WeatherResponse
+import com.botanipal.botanipal.data.response.WeatherResponse
 import com.botanipal.botanipal.databinding.FragmentHomeBinding
-import com.botanipal.botanipal.helper.DividerItemDecoration
 import com.botanipal.botanipal.ui.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices

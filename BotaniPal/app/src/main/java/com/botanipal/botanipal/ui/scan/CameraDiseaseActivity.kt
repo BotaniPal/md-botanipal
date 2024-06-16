@@ -21,9 +21,9 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import com.botanipal.botanipal.data.Prediction
+import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
-import com.botanipal.botanipal.data.api.Response
+import com.botanipal.botanipal.data.response.Response
 import com.botanipal.botanipal.databinding.ActivityCameraDiseaseBinding
 import com.botanipal.botanipal.helper.createCustomTempFile
 import com.botanipal.botanipal.helper.uriToFile
@@ -178,7 +178,7 @@ class CameraDiseaseActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     val apiService = ApiConfig.getDiseaseApiService()
-                    val successResponse = apiService.uploadImage(multipartBody)
+                    val successResponse = apiService.uploadDiseaseImage(multipartBody)
                     successResponse.prediction.let {
                         displayResult = it
 

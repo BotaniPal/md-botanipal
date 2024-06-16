@@ -12,15 +12,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import com.botanipal.botanipal.R
-import com.botanipal.botanipal.data.Prediction
+import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
-import com.botanipal.botanipal.data.api.Response
+import com.botanipal.botanipal.data.response.Response
 import com.botanipal.botanipal.databinding.FragmentScannerBinding
 import com.botanipal.botanipal.helper.uriToFile
 import com.botanipal.botanipal.ui.scan.CameraDiseaseActivity.Companion.CAMERAX_RESULT
@@ -153,7 +152,7 @@ class ScannerFragment : Fragment() {
             lifecycleScope.launch {
                 try {
                     val apiService = ApiConfig.getTypeApiService()
-                    val successResponse = apiService.uploadImage(multipartBody)
+                    val successResponse = apiService.uploadTypeImage(multipartBody)
                     successResponse.prediction.let {
                         displayResult = it
 

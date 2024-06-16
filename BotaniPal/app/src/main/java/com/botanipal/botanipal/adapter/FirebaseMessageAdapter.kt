@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.botanipal.botanipal.R
-import com.botanipal.botanipal.data.Message
+import com.botanipal.botanipal.data.model.Message
 import com.botanipal.botanipal.databinding.MessageItemBinding
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter

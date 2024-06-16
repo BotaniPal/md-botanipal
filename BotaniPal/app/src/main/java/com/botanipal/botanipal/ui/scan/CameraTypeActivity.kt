@@ -12,28 +12,19 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.botanipal.botanipal.R
-import com.botanipal.botanipal.data.Prediction
+import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
-import com.botanipal.botanipal.data.api.Response
 import com.botanipal.botanipal.databinding.ActivityCameraTypeBinding
 import com.botanipal.botanipal.helper.createCustomTempFile
 import com.botanipal.botanipal.helper.uriToFile
-import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -187,7 +178,7 @@ class CameraTypeActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     val apiService = ApiConfig.getTypeApiService()
-                    val successResponse = apiService.uploadImage(multipartBody)
+                    val successResponse = apiService.uploadTypeImage(multipartBody)
                     successResponse.prediction.let {
                         displayResult = it
 

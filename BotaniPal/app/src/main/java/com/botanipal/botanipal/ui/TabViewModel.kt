@@ -3,8 +3,8 @@ package com.botanipal.botanipal.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.botanipal.botanipal.data.ChaTanis
-import com.botanipal.botanipal.data.Topics
+import com.botanipal.botanipal.data.model.ChaTanis
+import com.botanipal.botanipal.data.model.Topics
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Locale

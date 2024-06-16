@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.botanipal.botanipal.data.Commodity
+import com.botanipal.botanipal.data.model.Commodity
 import com.botanipal.botanipal.databinding.CommodityItemBinding
 import com.botanipal.botanipal.helper.CommodityDiffCallback
 

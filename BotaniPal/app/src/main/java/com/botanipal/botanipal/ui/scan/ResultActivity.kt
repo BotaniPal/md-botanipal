@@ -1,20 +1,14 @@
 package com.botanipal.botanipal.ui.scan
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.botanipal.botanipal.R
-import com.botanipal.botanipal.data.Prediction
-import com.botanipal.botanipal.data.api.Response
+import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.databinding.ActivityResultBinding
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

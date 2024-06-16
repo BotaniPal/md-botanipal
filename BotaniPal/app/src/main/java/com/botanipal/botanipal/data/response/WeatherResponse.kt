@@ -1,4 +1,4 @@
-package com.botanipal.botanipal.data.api
+package com.botanipal.botanipal.data.response
 
 data class WeatherResponse(
     val location: Location,

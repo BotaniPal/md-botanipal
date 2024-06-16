@@ -1,4 +1,4 @@
-package com.botanipal.botanipal.data
+package com.botanipal.botanipal.data.model
 
 data class Message(
     val text: String? = null,
