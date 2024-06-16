@@ -16,6 +16,13 @@
         <item name="android:toolbarStyle">?attr/colorOnPrimary</item>
         <item name="android:actionBarTheme">?attr/colorOnPrimary</item>
         <item name="android:windowBackground">@color/white</item>
+        <item name="toolbarStyle">@style/AppToolbar</item>
+    </style>
+
+    <style name="AppToolbar" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="android:background">?attr/colorOnPrimary</item>
+        <item name="titleTextColor">?attr/colorPrimary</item>
+        <item name="subtitleTextColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Theme.BotaniPal" parent="Base.Theme.BotaniPal" />

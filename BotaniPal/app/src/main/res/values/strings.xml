@@ -48,4 +48,37 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    
+    <integer-array name="commodity_photos">
+        <item>@drawable/bawang</item>
+        <item>@drawable/lombok</item>
+        <item>@drawable/jagungt</item>
+        <item>@drawable/kacang_tanah</item>
+        <item>@drawable/kedelai</item>
+        <item>@drawable/kentang</item>
+        <item>@drawable/kol</item>
+        <item>@drawable/tomat</item>
+    </integer-array>
+
+    <string-array name="commodity_name">
+        <item>Bawang Merah</item>
+        <item>Cabe Rawit Merah</item>
+        <item>Jagung</item>
+        <item>Kacang Tanah</item>
+        <item>Kedelai</item>
+        <item>Kentang</item>
+        <item>Kol</item>
+        <item>Tomat</item>
+    </string-array>
+
+    <string-array name="commodity_price">
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+        <item>50,000/kg</item>
+    </string-array>
 </resources>

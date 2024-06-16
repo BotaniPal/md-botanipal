@@ -10,17 +10,19 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
-    card_view:cardCornerRadius="4dp"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="0dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackground"
-    android:foregroundTint="?attr/colorSecondary">
+    android:foreground="@android:color/transparent"
+    android:foregroundTint="@android:color/transparent"
+    card_view:cardBackgroundColor="@android:color/transparent">
 
     <LinearLayout
         android:id="@+id/topicCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/comodity_chip"
+        android:background="@android:color/transparent"
         android:orientation="horizontal"
         android:padding="16dp">
 
@@ -106,5 +108,10 @@
 
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/icon"
+        android:layout_gravity="bottom"/>
 
 </androidx.cardview.widget.CardView>
