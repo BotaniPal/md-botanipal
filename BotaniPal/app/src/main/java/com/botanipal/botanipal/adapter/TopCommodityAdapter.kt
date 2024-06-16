@@ -11,6 +11,7 @@ import com.botanipal.botanipal.helper.CommodityDiffCallback
 class TopCommodityAdapter(private var commodities: List<Commodity>) : RecyclerView.Adapter<TopCommodityAdapter.ListViewHolder>() {
     inner class ListViewHolder(private val binding: CommodityItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(commodity: Commodity) {
+            binding.tvIconStart.setImageResource(commodity.image)
             binding.tvTitleComodity.text = commodity.name
             binding.tvPriceComodity.text = commodity.price
         }

@@ -4,18 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.botanipal.botanipal.data.Commodity
+import com.botanipal.botanipal.data.ChaTanis
 import com.botanipal.botanipal.data.Topics
-import com.botanipal.botanipal.databinding.CommodityItemBinding
 import com.botanipal.botanipal.databinding.TopicItemBinding
-import com.botanipal.botanipal.helper.CommodityDiffCallback
+import com.botanipal.botanipal.helper.ChaTanisDiffCallback
 import com.botanipal.botanipal.helper.TopicsDiffCallback
 
-class LatestTopicAdapter(private var topics: List<Topics>) : RecyclerView.Adapter<LatestTopicAdapter.ListViewHolder>() {
+class ChatanisAdapter (private var chaTanis: List<ChaTanis>) : RecyclerView.Adapter<ChatanisAdapter.ListViewHolder>() {
     inner class ListViewHolder(private val binding: TopicItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(topic: Topics) {
-            binding.topicTitle.text = topic.title
-            binding.topicDesc.text = topic.description
+        fun bind(chaTanis: ChaTanis) {
+            binding.topicTitle.text = chaTanis.title
+            binding.topicDesc.text = chaTanis.description
         }
     }
 
@@ -23,7 +22,7 @@ class LatestTopicAdapter(private var topics: List<Topics>) : RecyclerView.Adapte
         holder: ListViewHolder,
         position: Int
     ) {
-        val topic = topics[position]
+        val topic = chaTanis[position]
         holder.bind(topic)
     }
 
@@ -36,12 +35,12 @@ class LatestTopicAdapter(private var topics: List<Topics>) : RecyclerView.Adapte
         return ListViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = topics.size
+    override fun getItemCount(): Int = chaTanis.size
 
-    fun updateCommodities(newTopics: List<Topics>) {
-        val topicDiffCallback = TopicsDiffCallback(this.topics, newTopics)
-        val diffResult = DiffUtil.calculateDiff(topicDiffCallback)
-        this.topics = newTopics
+    fun updateForum(newChaTanis: List<ChaTanis>) {
+        val chaTanisDiffCallback = ChaTanisDiffCallback(this.chaTanis, newChaTanis)
+        val diffResult = DiffUtil.calculateDiff(chaTanisDiffCallback)
+        this.chaTanis = newChaTanis
         diffResult.dispatchUpdatesTo(this)
     }
 }

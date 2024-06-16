@@ -69,4 +69,9 @@
             android:id="@+id/action_navigation_bookmark_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="com.botanipal.botanipal.ui.TabFragment"
+        android:label="fragment_tab"
+        tools:layout="@layout/fragment_tab" />
 </navigation>

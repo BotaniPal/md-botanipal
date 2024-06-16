@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="?attr/colorOnPrimary"
+    >
+    <item
+        android:id="@+id/navigation_receipt"
+        android:title="History Transaction"
+        android:icon="@drawable/receipt"
+        app:showAsAction="always"
+        app:iconTint="?attr/colorPrimary"/>
+    <item
+        android:id="@+id/navigation_account"
+        android:title="Account"
+        android:icon="@drawable/user_circle"
+        app:showAsAction="always"
+        app:iconTint="?attr/colorPrimary"/>
+    <item
+        android:id="@+id/navigation_settings"
+        android:title="Settings"
+        android:icon="@drawable/sliders_horizontal"
+        app:showAsAction="always"
+        app:iconTint="?attr/colorPrimary"/>
+
+</menu>

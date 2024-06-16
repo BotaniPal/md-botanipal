@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "174987794710",
+    "firebase_url": "https://botanipal-bdaa5-default-rtdb.firebaseio.com",
+    "project_id": "botanipal-bdaa5",
+    "storage_bucket": "botanipal-bdaa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174987794710:android:9325f60eb3587a08769837",
+        "android_client_info": {
+          "package_name": "com.botanipal.botanipal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9VmVXkxuUhrvpWB5xBfkC8ZFs_8gFpzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

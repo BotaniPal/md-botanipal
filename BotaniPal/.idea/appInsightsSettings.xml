@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.botanipal.botanipal" />
+                  <option name="mobileSdkAppId" value="1:174987794710:android:9325f60eb3587a08769837" />
+                  <option name="projectId" value="botanipal-bdaa5" />
+                  <option name="projectNumber" value="174987794710" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
