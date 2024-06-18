@@ -16,18 +16,13 @@ import com.botanipal.botanipal.data.response.ScanData
 import com.botanipal.botanipal.databinding.FragmentBookmarkTabBinding
 import com.botanipal.botanipal.ui.scan.ResultActivity
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BookmarkTabFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BookmarkTabFragment : Fragment() {
     private var _binding: FragmentBookmarkTabBinding? = null
     private val binding get() = _binding
     private lateinit var progressBar: ProgressBar
     private lateinit var plantAdapter: PlantAdapter
 //    private lateinit var chatAdapter: ChatAdapter
-    private val viewModel: BookmarkTabViewModel by viewModels()
+//    private val viewModel: BookmarkTabViewModel by viewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,52 +36,52 @@ class BookmarkTabFragment : Fragment() {
         val recyclerView = binding?.rvUserFollow ?: view.findViewById(R.id.rv_user_follow)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val sectionNumber = arguments?.getInt(ARG_SECTION_NUMBER, 0)
-        val title = arguments?.getString(ARG_TITLE) ?: "BotaniPal"
+//        val sectionNumber = arguments?.getInt(ARG_SECTION_NUMBER, 0)
+//        val title = arguments?.getString(ARG_TITLE) ?: "BotaniPal"
 
-        if (sectionNumber == 1) {
+//        if (sectionNumber == 1) {
             progressBar.visibility = View.VISIBLE
             recyclerView.adapter = plantAdapter
 
             plantAdapter.setOnItemClickCallback(object : PlantAdapter.OnItemClickCallback {
                 override fun onItemClicked(data: ScanData) {
                     val intent = Intent(requireContext(), ResultActivity::class.java).apply {
-                        putExtra(ARG_TITLE, data.prediction)
+//                        putExtra(ARG_TITLE, data.prediction)
                     }
                     startActivity(intent)
                 }
             })
 
-            viewModel.plantType.observe(viewLifecycleOwner) {
-                plantAdapter.updatePlants(it)
-                progressBar.visibility = View.GONE
-            }
-
-            if(viewModel.plantType.value.isNullOrEmpty()) {
-                viewModel.getBookmarkPlant()
-            }
-        } else {
-            progressBar.visibility = View.VISIBLE
-            recyclerView.adapter = plantAdapter
-
-            plantAdapter.setOnItemClickCallback(object : PlantAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: ScanData) {
-                    val intent = Intent(requireContext(), ResultActivity::class.java).apply {
-                        putExtra(ARG_TITLE, data.prediction)
-                    }
-                    startActivity(intent)
-                }
-            })
-
-            viewModel.plantDisease.observe(viewLifecycleOwner) {
-                plantAdapter.updatePlants(it)
-                progressBar.visibility = View.GONE
-            }
-
-            if(viewModel.plantDisease.value.isNullOrEmpty()) {
-                viewModel.getBookmarkDisease()
-            }
-        }
+//            viewModel.plantType.observe(viewLifecycleOwner) {
+//                plantAdapter.updatePlants(it)
+//                progressBar.visibility = View.GONE
+//            }
+//
+//            if(viewModel.plantType.value.isNullOrEmpty()) {
+//                viewModel.getBookmark()
+//            }
+//        } else {
+//            progressBar.visibility = View.VISIBLE
+//            recyclerView.adapter = plantAdapter
+//
+//            plantAdapter.setOnItemClickCallback(object : PlantAdapter.OnItemClickCallback {
+//                override fun onItemClicked(data: ScanData) {
+//                    val intent = Intent(requireContext(), ResultActivity::class.java).apply {
+//                        putExtra(ARG_TITLE, data.prediction)
+//                    }
+//                    startActivity(intent)
+//                }
+//            })
+//
+//            viewModel.plantDisease.observe(viewLifecycleOwner) {
+//                plantAdapter.updatePlants(it)
+//                progressBar.visibility = View.GONE
+//            }
+//
+//            if(viewModel.plantDisease.value.isNullOrEmpty()) {
+//                viewModel.getBookmarkDisease()
+//            }
+//        }
 
     }
 
@@ -100,16 +95,16 @@ class BookmarkTabFragment : Fragment() {
     }
 
     companion object {
-        const val ARG_SECTION_NUMBER = "section_number"
-        const val ARG_TITLE = "TITLE"
+//        const val ARG_SECTION_NUMBER = "section_number"
+//        const val ARG_TITLE = "TITLE"
 
-        @JvmStatic
-        fun newInstance(sectionNumber: Int, title: String) =
-            BookmarkTabFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ChatTabFragment.ARG_SECTION_NUMBER, sectionNumber)
-                    putString(ChatTabFragment.ARG_TITLE, title)
-                }
-            }
+//        @JvmStatic
+//        fun newInstance(sectionNumber: Int, title: String) =
+//            BookmarkTabFragment().apply {
+//                arguments = Bundle().apply {
+//                    putInt(ChatTabFragment.ARG_SECTION_NUMBER, sectionNumber)
+//                    putString(ChatTabFragment.ARG_TITLE, title)
+//                }
+//            }
     }
 }

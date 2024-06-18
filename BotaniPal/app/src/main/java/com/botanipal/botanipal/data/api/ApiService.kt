@@ -1,5 +1,6 @@
 package com.botanipal.botanipal.data.api
 
+import androidx.lifecycle.LiveData
 import com.botanipal.botanipal.data.response.AddBookmarkResponse
 import com.botanipal.botanipal.data.response.BookmarkResponse
 import com.botanipal.botanipal.data.response.ForecastResponse
