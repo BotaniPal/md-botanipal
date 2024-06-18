@@ -4,9 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class AddBookmarkResponse(
 
-	@field:SerializedName("bookmarkId")
-	val bookmarkId: String,
-
 	@field:SerializedName("message")
-	val message: String
+	val message: String,
+
+	@field:SerializedName("bookmarkId")
+	val bookmarkId: String
+
 )

@@ -7,23 +7,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.botanipal.botanipal.R
+import com.botanipal.botanipal.adapter.PriceAdapter
+import com.botanipal.botanipal.databinding.FragmentPriceBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PriceFragment : Fragment() {
+    private var _binding: FragmentPriceBinding? = null
+    private val binding get() = _binding
+    private lateinit var progressBar: ProgressBar
+    private lateinit var commodityAdapter: PriceAdapter
+    private val viewModel: PriceViewModel by viewModels()
 
     companion object {
         fun newInstance() = PriceFragment()
     }
 
-    private val viewModel: PriceViewModel by viewModels()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        progressBar = binding?.fragmentProgressBar ?: view.findViewById(R.id.fragmentProgressBar)
+        progressBar.visibility = View.VISIBLE
 
+        commodityAdapter = PriceAdapter(emptyList())
 
-        // TODO: Use the ViewModel
+        val recyclerView: RecyclerView = view.findViewById(R.id.rv_commodity)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        if (viewModel.commodity.value.isNullOrEmpty()) {
+            viewModel.getCommodity()
+        }
     }
 
     override fun onCreateView(

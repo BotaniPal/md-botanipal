@@ -4,45 +4,42 @@ import com.google.gson.annotations.SerializedName
 
 data class BookmarkResponse(
 
-	@field:SerializedName("bookmarkId")
-	val bookmarkId: String,
+	@field:SerializedName("data")
+	val data: List<DataItem?>? = null,
+
+	@field:SerializedName("error")
+	val error: Any? = null,
 
 	@field:SerializedName("message")
-	val message: String,
-
-	@field:SerializedName("AddBookmarkResponse")
-	val addBookmarkResponse: List<BookmarkResponseItem>
+	val message: String? = null
 )
 
-data class BookmarkResponseItem(
+data class DataItem(
 
 	@field:SerializedName("predictionResult")
-	val predictionResult: String,
+	val predictionResult: String? = null,
 
 	@field:SerializedName("predictionType")
-	val predictionType: String,
+	val predictionType: String? = null,
 
 	@field:SerializedName("imageUrl")
-	val imageUrl: String,
+	val imageUrl: String? = null,
 
 	@field:SerializedName("id")
-	val id: String,
+	val id: String? = null,
 
 	@field:SerializedName("userId")
-	val userId: String,
+	val userId: String? = null,
 
 	@field:SerializedName("timestamp")
-	val timestamp: Timestamp
+	val timestamp: Timestamp? = null
 )
 
 data class Timestamp(
 
 	@field:SerializedName("_nanoseconds")
-	val nanoseconds: Int,
+	val nanoseconds: Int? = null,
 
 	@field:SerializedName("_seconds")
-	val seconds: Int
+	val seconds: Int? = null
 )
-
-
-

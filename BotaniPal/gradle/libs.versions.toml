@@ -25,6 +25,7 @@ cameraLifecycle = "1.3.3"
 playServicesLocation = "21.0.1"
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
 playServicesMaps = "18.2.0"
+datastorePreferences = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +50,8 @@ androidx-camera-view = { group = "androidx.camera", name = "camera-view", versio
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

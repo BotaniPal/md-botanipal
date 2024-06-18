@@ -7,10 +7,27 @@
     tools:context=".ui.price.PriceFragment"
     android:id="@+id/priceFragment">
 
+    <ProgressBar
+        android:id="@+id/fragmentProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_commodity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Price Fragment" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
 </FrameLayout>

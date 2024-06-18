@@ -9,7 +9,7 @@ import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TabViewModel : ViewModel() {
+class ChatTabViewModel : ViewModel() {
     private val _topic = MutableLiveData<List<Topics>>()
     val topic: LiveData<List<Topics>> = _topic
 

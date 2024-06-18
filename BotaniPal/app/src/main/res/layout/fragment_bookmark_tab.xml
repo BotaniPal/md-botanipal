@@ -23,23 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp" />
 
-    <Button
-        android:id="@+id/btnAddForum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="New Topic"
-        app:cornerRadius="50dp"
-        app:icon="@drawable/plus"
-        android:backgroundTint="@color/primary_700"
-        app:iconSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/etSearch"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
-
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_user_follow"
@@ -49,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddForum" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
     <ProgressBar
         android:id="@+id/fragmentProgressBar"

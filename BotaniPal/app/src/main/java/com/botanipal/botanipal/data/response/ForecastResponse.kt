@@ -2,10 +2,10 @@ package com.botanipal.botanipal.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class RegisterResponse(
+data class ForecastResponse(
 
 	@field:SerializedName("data")
-	val data: UidData? = null,
+	val data: Data? = null,
 
 	@field:SerializedName("error")
 	val error: Any? = null,
@@ -14,8 +14,8 @@ data class RegisterResponse(
 	val message: String? = null
 )
 
-data class UidData(
+data class Data(
 
-	@field:SerializedName("uid")
-	val uid: String? = null
+	@field:SerializedName("predicted_price")
+	val predictedPrice: Int? = null
 )

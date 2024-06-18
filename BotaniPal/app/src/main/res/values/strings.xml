@@ -4,6 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_1_chat">ChaTanis</string>
     <string name="tab_text_2_chat">Forum</string>
+    <string name="tab_text_3_chat">Plant Type</string>
+    <string name="tab_text_4_chat">Plant Disease</string>
     <string name="send_success">Berhasil terkirim</string>
     <string name="send_error">Gagal terkirim</string>
     <!-- Strings used for fragments for navigation -->
@@ -48,7 +50,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    
+
     <integer-array name="commodity_photos">
         <item>@drawable/bawang</item>
         <item>@drawable/lombok</item>

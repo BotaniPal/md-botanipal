@@ -11,6 +11,7 @@ import com.botanipal.botanipal.adapter.FirebaseMessageAdapter
 import com.botanipal.botanipal.data.model.Message
 import com.botanipal.botanipal.databinding.ActivityForumsBinding
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.database
@@ -75,6 +76,7 @@ class ForumsActivity : AppCompatActivity() {
             }
             R.id.forumBookmark -> {
                 // Handle bookmark
+
                 true
             }
             else -> super.onOptionsItemSelected(menuItem)

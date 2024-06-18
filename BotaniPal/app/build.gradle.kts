@@ -16,6 +16,7 @@ android {
         versionName = "1.0"
 
         buildConfigField("String", "API_WEATHER", "\"a7c5c0385ba04058bfe25408241206\"")
+        buildConfigField("String", "BASE_URL", "\"https://getprediction-akgztv2v4a-et.a.run.app\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -83,4 +84,6 @@ dependencies {
 
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    implementation(libs.androidx.datastore.preferences)
 }

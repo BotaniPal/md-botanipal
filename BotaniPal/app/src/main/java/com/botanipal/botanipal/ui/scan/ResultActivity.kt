@@ -1,9 +1,12 @@
 package com.botanipal.botanipal.ui.scan
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -26,6 +29,8 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val fabSave: ExtendedFloatingActionButton = binding.fabSave
         val colorSecondary = ContextCompat.getColor(this, R.color.secondary_1000)
         val textColorStatic = ContextCompat.getColor(this, R.color.black)
@@ -35,6 +40,7 @@ class ResultActivity : AppCompatActivity() {
 
         val image = intent.getStringExtra(EXTRA_IMAGE_URI) ?: return
         val result = intent.getStringExtra(EXTRA_RESULT) ?: return
+        val id = intent.getStringExtra(EXTRA_ID) ?: return
 
         val imageUri = Uri.parse(image)
         imageUri?.let {
@@ -45,7 +51,7 @@ class ResultActivity : AppCompatActivity() {
 
         savedButton = findViewById(R.id.fab_save)
 
-        bindData(Prediction(image, result))
+        bindData(Prediction(image, result, id))
 
 //        resultViewModel.fetchPredictionByUri(EXTRA_IMAGE_URI)
 
@@ -69,10 +75,10 @@ class ResultActivity : AppCompatActivity() {
 
     private fun bindData(prediction: Prediction) {
         Glide.with(this)
-            .load(prediction.photo)
+            .load(prediction.imageUrl)
 //            .circleCrop()
             .into(binding.resultImage)
-        binding.resultText.text = prediction.result
+        binding.resultText.text = prediction.prediction
     }
 
 //    private fun isAutoSave(imageUri: String, result: String) {
@@ -97,6 +103,35 @@ class ResultActivity : AppCompatActivity() {
 //        updateSaveButtonState()
 //    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.result_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.share -> {
+                // Handle settings
+//                val accUrl = userDetailsViewModel.userDetails.value?.url
+                val shareIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, EXTRA_IMAGE_URI)
+                    putExtra(Intent.EXTRA_TEXT, EXTRA_RESULT)
+                    type = "text/plain"
+                }
+
+                val chooser = Intent.createChooser(shareIntent, "Bagikan dengan...")
+                startActivity(chooser)
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun updateSaveButtonState() {
         if (isSaved) {
             savedButton.setIconResource(R.drawable.icons8_save_filled)
@@ -112,5 +147,6 @@ class ResultActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_IMAGE_URI = "extra_image_uri"
         const val EXTRA_RESULT = "extra_result"
+        const val EXTRA_ID = "extra_id"
     }
 }

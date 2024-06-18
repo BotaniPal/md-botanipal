@@ -19,7 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
-import com.botanipal.botanipal.data.response.Response
+import com.botanipal.botanipal.data.response.ScanResponse
 import com.botanipal.botanipal.databinding.FragmentScannerBinding
 import com.botanipal.botanipal.helper.uriToFile
 import com.botanipal.botanipal.ui.scan.CameraDiseaseActivity.Companion.CAMERAX_RESULT
@@ -151,9 +151,9 @@ class ScannerFragment : Fragment() {
             )
             lifecycleScope.launch {
                 try {
-                    val apiService = ApiConfig.getTypeApiService()
+                    val apiService = ApiConfig.getApiService()
                     val successResponse = apiService.uploadTypeImage(multipartBody)
-                    successResponse.prediction.let {
+                    successResponse.data?.prediction?.let {
                         displayResult = it
 
                         val intent = Intent(requireContext(), ResultActivity::class.java).apply {
@@ -167,8 +167,8 @@ class ScannerFragment : Fragment() {
 //                    showLoading(false)
                 } catch (e: HttpException) {
                     val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, Response::class.java)
-                    Log.e("Upload Error", "HTTP error: ${errorResponse.prediction}")
+                    val errorResponse = Gson().fromJson(errorBody, ScanResponse::class.java)
+                    Log.e("Upload Error", "HTTP error: ${errorResponse.message}")
                 }
             }
         } ?: run {

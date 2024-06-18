@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/tabFragment"
-        android:name="com.botanipal.botanipal.ui.TabFragment"
+        android:name="com.botanipal.botanipal.ui.ChatTabFragment"
         android:label="fragment_tab"
         tools:layout="@layout/fragment_tab" />
 </navigation>

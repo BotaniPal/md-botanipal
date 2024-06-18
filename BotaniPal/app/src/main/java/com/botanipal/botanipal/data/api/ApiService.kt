@@ -2,18 +2,17 @@ package com.botanipal.botanipal.data.api
 
 import com.botanipal.botanipal.data.response.AddBookmarkResponse
 import com.botanipal.botanipal.data.response.BookmarkResponse
+import com.botanipal.botanipal.data.response.ForecastResponse
 import com.botanipal.botanipal.data.response.LoginResponse
-import com.botanipal.botanipal.data.response.PasswordResponse
 import com.botanipal.botanipal.data.response.ProfileResponse
 import com.botanipal.botanipal.data.response.RegisterResponse
-import com.botanipal.botanipal.data.response.Response
+import com.botanipal.botanipal.data.response.ScanResponse
 import com.botanipal.botanipal.data.response.TransactionResponse
 import com.botanipal.botanipal.data.response.WeatherResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.DELETE
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -41,7 +40,7 @@ interface ApiService {
     @POST("/auth/forgot-password")
     suspend fun forgotPassword(
         @Query("email") email: String
-    ): PasswordResponse
+    ): LoginResponse
 
     @POST("/auth/reset-password")
     suspend fun resetPassword(
@@ -49,17 +48,17 @@ interface ApiService {
         @Query("otp") otp: String,
         @Query("newPassword") newPassword: String,
         @Query("newConfirmPassword") newConfirmPassword: String
-    ): PasswordResponse
+    ): LoginResponse
 
     @GET("/profile/user")
     suspend fun getUserProfile(
-        @Header("Authorization") token: String
+//        @Header("Authorization") token: String
     ): ProfileResponse
 
     @Multipart
     @POST("/profile/user/update")
     suspend fun updateUserProfile(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Query("username") username: String,
         @Query("name") name: String,
         @Query("bio") bio: String,
@@ -68,7 +67,7 @@ interface ApiService {
 
     @POST("/transactions")
     suspend fun getTransactions(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Query("uid_expert")  uid_expert: String,
         @Query("uid_user") uid_user: String,
         @Query("paymentNominal") paymentNominal: Int,
@@ -79,19 +78,19 @@ interface ApiService {
 
     @GET("/transactions/users/{userid}/transactions")
     suspend fun getTransactionsByUser(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Path("userid") userid: String
     ): TransactionResponse
 
     @GET("/transactions/{transactionid}")
     suspend fun getTransactionById(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Path("transactionid") transactionid: String
     ): TransactionResponse
 
     @PUT("/transactions/{transactionId}")
     suspend fun updateTransaction(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Path("transactionId") transactionId: String,
         @Query("transactionProgress") transactionProgress: String
         ): TransactionResponse
@@ -101,34 +100,40 @@ interface ApiService {
     @POST("/predict/plant")
     suspend fun uploadTypeImage(
         @Part file: MultipartBody.Part
-    ): Response
+    ): ScanResponse
 
     //    disease
     @Multipart
     @POST("/predict/disease")
     suspend fun uploadDiseaseImage(
         @Part file: MultipartBody.Part
-    ): Response
+    ): ScanResponse
 
     @POST("/predict/bookmark")
     suspend fun bookmarkPlant(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Query("predictionId") predictionId: String,
         @Query("prediction") prediction: String,
         @Query("imageUrl") imageUrl: String,
         @Query("predictionType") predictionType: String
     ): AddBookmarkResponse
 
+    @POST("/forecast")
+    suspend fun uploadForecast(
+        @Query("future_date") future_date: String,
+        @Query("commodity") commodity: String,
+    ) : ForecastResponse
+
     @GET("/bookmarks")
     suspend fun getBookmarks(
-        @Header("Authorization") token: String
+//        @Header("Authorization") token: String
     ): BookmarkResponse
 
     @DELETE("/bookmarks/{bookmarkId}")
     suspend fun deleteBookmark(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Path("bookmarkId") bookmarkId: String
-    ): Response
+    ): BookmarkResponse
 
     @GET("current.json")
     fun getCurrentWeather(

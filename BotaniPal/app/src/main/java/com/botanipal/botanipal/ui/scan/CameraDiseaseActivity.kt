@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
-import com.botanipal.botanipal.data.response.Response
+import com.botanipal.botanipal.data.response.ScanResponse
 import com.botanipal.botanipal.databinding.ActivityCameraDiseaseBinding
 import com.botanipal.botanipal.helper.createCustomTempFile
 import com.botanipal.botanipal.helper.uriToFile
@@ -49,7 +49,7 @@ class CameraDiseaseActivity : AppCompatActivity() {
         binding = ActivityCameraDiseaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        prediction = Prediction(" ", " ")
+        prediction = Prediction(" ", " ", " ")
 
         binding.switchCamera.setOnClickListener {
             cameraSelector =
@@ -177,9 +177,9 @@ class CameraDiseaseActivity : AppCompatActivity() {
             )
             lifecycleScope.launch {
                 try {
-                    val apiService = ApiConfig.getDiseaseApiService()
+                    val apiService = ApiConfig.getApiService()
                     val successResponse = apiService.uploadDiseaseImage(multipartBody)
-                    successResponse.prediction.let {
+                    successResponse.data?.prediction?.let {
                         displayResult = it
 
                         val intent = Intent(this@CameraDiseaseActivity, ResultActivity::class.java).apply {
@@ -193,8 +193,8 @@ class CameraDiseaseActivity : AppCompatActivity() {
 //                    showLoading(false)
                 } catch (e: HttpException) {
                     val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, Response::class.java)
-                    Log.e("Upload Error", "HTTP error: ${errorResponse.prediction}")
+                    val errorResponse = Gson().fromJson(errorBody, ScanResponse::class.java)
+                    Log.e("Upload Error", "HTTP error: ${errorResponse.message}")
                 }
             }
         } ?: run {

@@ -23,16 +23,16 @@ import com.botanipal.botanipal.ui.chat.forums.ForumsActivity
 
 /**
  * A simple [Fragment] subclass.
- * Use the [TabFragment.newInstance] factory method to
+ * Use the [ChatTabFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TabFragment : Fragment() {
+class ChatTabFragment : Fragment() {
     private var _binding: FragmentTabBinding? = null
     private val binding get() = _binding
     private lateinit var progressBar: ProgressBar
     private lateinit var forumAdapter: ForumAdapter
     private lateinit var chatanisAdapter: ChatanisAdapter
-    private val viewModel: TabViewModel by viewModels()
+    private val viewModel: ChatTabViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,7 +94,7 @@ class TabFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(sectionNumber: Int, title: String) =
-            TabFragment().apply {
+            ChatTabFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                     putString(ARG_TITLE, title)

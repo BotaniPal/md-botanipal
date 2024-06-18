@@ -2,8 +2,8 @@ package com.botanipal.botanipal.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class PasswordResponse(
+data class ErrorResponse(
 
-	@field:SerializedName("message")
-	val message: String
+    @SerializedName("message")
+    val message: String? = null
 )

@@ -54,7 +54,7 @@ class CameraTypeActivity : AppCompatActivity() {
 //        appBarConfiguration = AppBarConfiguration(navController.graph)
 //        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        prediction = Prediction(" ", " ")
+        prediction = Prediction(" ", " ", " ")
 
         binding.switchCamera.setOnClickListener {
             cameraSelector =
@@ -177,14 +177,15 @@ class CameraTypeActivity : AppCompatActivity() {
             )
             lifecycleScope.launch {
                 try {
-                    val apiService = ApiConfig.getTypeApiService()
+                    val apiService = ApiConfig.getApiService()
                     val successResponse = apiService.uploadTypeImage(multipartBody)
-                    successResponse.prediction.let {
+                    successResponse.data?.prediction?.let {
                         displayResult = it
 
                         val intent = Intent(this@CameraTypeActivity, ResultActivity::class.java).apply {
                             putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
                             putExtra(ResultActivity.EXTRA_RESULT, displayResult)
+                            putExtra(ResultActivity.EXTRA_ID, successResponse.data.predictionId)
                         }
                         Log.d("Result", "uploadImage: $currentImageUri  hasil $displayResult")
                         startActivity(intent)
