@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background"
+    tools:context=".ui.login.LoginActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/green"
+            android:layout_marginBottom="-12dp"  />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BotaniPal"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:textColor="@color/green" />
+
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp"
+            android:background="@drawable/green_border">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/green"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/username"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="40dp"
+                android:padding="8dp"
+                android:hint="Insert your username"
+                android:drawablePadding="8dp"
+                android:textColor="@color/green"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/password"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Insert your password"
+                android:drawablePadding="8dp"
+                android:textColor="@color/green"/>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#003A18"
+                android:text="Register"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                app:cornerRadius="50dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/registerRedirectText"
+                android:text="Not yet registered?"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/green"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
