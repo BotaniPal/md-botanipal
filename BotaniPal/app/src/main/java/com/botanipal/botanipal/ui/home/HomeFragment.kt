@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.botanipal.botanipal.BuildConfig
 import com.botanipal.botanipal.R
@@ -61,6 +62,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        viewModel.getSession().observe(viewLifecycleOwner) {
+            binding.tvGreetingName.text = "${it.username}!"
+        }
+
+
         commodityAdapter = TopCommodityAdapter(emptyList())
         topicAdapter = ForumAdapter(getTopics())
         retrieveLocation()
@@ -72,6 +78,10 @@ class HomeFragment : Fragment() {
         val topicRecyclerView = binding.rvTopics
         topicRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         topicRecyclerView.adapter = topicAdapter
+
+        val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.divider)!!)
+        topicRecyclerView.addItemDecoration(dividerItemDecoration)
 
         binding.btnPlantType.setOnClickListener {
             // Handle button click

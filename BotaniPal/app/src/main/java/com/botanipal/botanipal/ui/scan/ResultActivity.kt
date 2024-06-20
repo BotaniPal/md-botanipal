@@ -8,19 +8,21 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.databinding.ActivityResultBinding
+import com.botanipal.botanipal.ui.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
-//    private val resultViewModel: ResultViewModel by viewModels {
-//        ViewModelFactory.getInstance(application)
-//    }
+    private val resultViewModel: ResultViewModel by viewModels {
+        ViewModelFactory.getInstance(application)
+    }
     private var isSaved: Boolean = false
     private lateinit var savedButton: ExtendedFloatingActionButton
     private lateinit var continueButton: ExtendedFloatingActionButton
@@ -71,6 +73,10 @@ class ResultActivity : AppCompatActivity() {
             finish()
         }
 
+        savedButton.setOnClickListener {
+            toggleSaveStatus(id, result, image, type)
+        }
+
 //        resultViewModel.getPredictionByUri(image).observe(this) { result ->
 //            isSaved = result != null
 //            updateSaveButtonState()
@@ -95,17 +101,16 @@ class ResultActivity : AppCompatActivity() {
 //        }
 //    }
 
-//    private fun toggleSaveState(imageUri: String, result: String) {
-//        if (isSaved){
-//            resultViewModel.deletePrediction(imageUri)
-//            showToast("Image unsaved")
-//        } else {
-//            resultViewModel.addPrediction(Prediction(resultViewModel.predictionData.value?.id, imageUri, result, resultViewModel.predictionData.value?.timestamp))
-//            showToast("Image saved")
-//        }
-//        isSaved = !isSaved
-//        updateSaveButtonState()
-//    }
+    private fun toggleSaveStatus(id: String, result: String, imageUri: String, type: String) {
+        if (isSaved){
+            showToast("Image unsaved")
+        } else {
+            resultViewModel.addBookmark(id, result, imageUri, type)
+            showToast("Image saved")
+        }
+        isSaved = !isSaved
+        updateSaveButtonState()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.result_menu, menu)
@@ -125,6 +130,7 @@ class ResultActivity : AppCompatActivity() {
                     action = Intent.ACTION_SEND
                     putExtra(Intent.EXTRA_TEXT, EXTRA_IMAGE_URI)
                     putExtra(Intent.EXTRA_TEXT, EXTRA_RESULT)
+                    putExtra(Intent.EXTRA_TEXT, EXTRA_TYPE)
                     type = "text/plain"
                 }
 
@@ -135,6 +141,8 @@ class ResultActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 
     private fun updateSaveButtonState() {
         if (isSaved) {

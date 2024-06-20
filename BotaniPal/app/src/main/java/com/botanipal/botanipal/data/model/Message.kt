@@ -5,5 +5,5 @@ data class Message(
     val name: String? = null,
     val photoUrl: String? = null,
     val timestamp: Long? = null,
-    val isBookmarked: Boolean? = null
+    val isBookmarked: Boolean? = false
 )

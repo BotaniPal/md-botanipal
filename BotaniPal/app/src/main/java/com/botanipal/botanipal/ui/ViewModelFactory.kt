@@ -14,6 +14,7 @@ import com.botanipal.botanipal.ui.home.HomeViewModel
 import com.botanipal.botanipal.ui.login.LoginViewModel
 import com.botanipal.botanipal.ui.price.PriceViewModel
 import com.botanipal.botanipal.ui.register.RegisterViewModel
+import com.botanipal.botanipal.ui.scan.ResultViewModel
 import com.botanipal.botanipal.ui.scan.ScannerViewModel
 
 class ViewModelFactory(private val repository: UserRepository, private val sharedPreferences: SharedPreferences, private val resources: Resources) : ViewModelProvider.Factory {
@@ -34,6 +35,8 @@ class ViewModelFactory(private val repository: UserRepository, private val share
             return LoginViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
             return RegisterViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(ResultViewModel::class.java)) {
+            return ResultViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

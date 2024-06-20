@@ -1,5 +1,7 @@
 package com.botanipal.botanipal.adapter
 
+import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +12,11 @@ import com.botanipal.botanipal.data.response.DataItem
 import com.botanipal.botanipal.data.response.ScanData
 import com.botanipal.botanipal.databinding.BookmarkPlantItemBinding
 import com.botanipal.botanipal.helper.PlantDiffCallback
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import retrofit2.http.Url
 
 class PlantAdapter(private var prediction: List<DataItem>) : RecyclerView.Adapter<PlantAdapter.ListViewHolder>() {
 
@@ -32,8 +39,13 @@ class PlantAdapter(private var prediction: List<DataItem>) : RecyclerView.Adapte
         }
 
         fun bind(prediction: DataItem) {
+            Glide.with(binding.ivCommodityPhoto.context)
+                .load(prediction.imageUrl)
+                .into(binding.ivCommodityPhoto)
             binding.tvBookmarkName.text = prediction.predictionResult
             binding.tvBookmarkType.text = prediction.predictionType
+
+            Log.d("PlantAdapter", "bind: $prediction")
         }
     }
 

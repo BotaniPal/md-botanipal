@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -45,6 +47,10 @@ class BookmarkFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.rv_bookmark)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
+
+        val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.divider)!!)
+        recyclerView.addItemDecoration(dividerItemDecoration)
 
 //        adapter.setOnItemClickCallback(object : PlantAdapter.OnItemClickCallback {
 //            override fun onItemClicked(data: ScanData) {

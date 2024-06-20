@@ -154,7 +154,7 @@ interface ApiService {
     suspend fun deleteBookmark(
         @Header("Authorization") token: String,
         @Path("bookmarkId") bookmarkId: String
-    ): BookmarkResponse
+    )
 
     @GET("current.json")
     fun getCurrentWeather(
