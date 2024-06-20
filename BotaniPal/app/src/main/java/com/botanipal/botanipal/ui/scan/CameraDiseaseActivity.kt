@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -23,10 +24,12 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
+import com.botanipal.botanipal.data.api.UserRepository
 import com.botanipal.botanipal.data.response.ScanResponse
 import com.botanipal.botanipal.databinding.ActivityCameraDiseaseBinding
 import com.botanipal.botanipal.helper.createCustomTempFile
 import com.botanipal.botanipal.helper.uriToFile
+import com.botanipal.botanipal.ui.ViewModelFactory
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
@@ -43,13 +46,17 @@ class CameraDiseaseActivity : AppCompatActivity() {
 
     private lateinit var prediction: Prediction
 
+    private val viewModel by viewModels<ScannerViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCameraDiseaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        prediction = Prediction(" ", " ", " ")
+        prediction = Prediction(" ", " ", " ", "Disease")
 
         binding.switchCamera.setOnClickListener {
             cameraSelector =
@@ -137,15 +144,11 @@ class CameraDiseaseActivity : AppCompatActivity() {
             object : ImageCapture.OnImageSavedCallback {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-//                    val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
                     currentImageUri = output.savedUri ?: Uri.fromFile(photoFile)
                     Log.d(TAG, "Photo saved to: ${currentImageUri.toString()}")
-                    val intent = Intent().apply {
-                        putExtra(EXTRA_CAMERAX_IMAGE, currentImageUri.toString())
-                    }
-//                    setResult(CAMERAX_RESULT, intent)
-//                    finish()
+//                    viewModel.uploadImage(currentImageUri)
                     uploadImage()
+
                 }
 
                 override fun onError(exc: ImageCaptureException) {
@@ -171,34 +174,28 @@ class CameraDiseaseActivity : AppCompatActivity() {
 
             val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
             val multipartBody = MultipartBody.Part.createFormData(
-                "file",
+                "image",
                 imageFile.name,
                 requestImageFile
             )
-            lifecycleScope.launch {
-                try {
-                    val apiService = ApiConfig.getApiService()
-                    val successResponse = apiService.uploadDiseaseImage(multipartBody)
-                    successResponse.data?.prediction?.let {
-                        displayResult = it
+            try {
+                viewModel.scannerDisease(multipartBody)
+                viewModel.scanDisease.observe(this@CameraDiseaseActivity) {
+                    displayResult = it.prediction
 
-                        val intent = Intent(this@CameraDiseaseActivity, ResultActivity::class.java).apply {
-                            putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
-                            putExtra(ResultActivity.EXTRA_RESULT, displayResult)
-                        }
-                        Log.d("Result", "uploadImage: $currentImageUri  hasil $displayResult")
-                        startActivity(intent)
-
+                    val intent = Intent(this@CameraDiseaseActivity, ResultActivity::class.java).apply {
+                        putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
+                        putExtra(ResultActivity.EXTRA_RESULT, displayResult)
+                        putExtra(ResultActivity.EXTRA_ID, it.predictionId)
+                        putExtra(ResultActivity.EXTRA_TYPE, "Disease")
                     }
-//                    showLoading(false)
-                } catch (e: HttpException) {
-                    val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, ScanResponse::class.java)
-                    Log.e("Upload Error", "HTTP error: ${errorResponse.message}")
+                    Log.d("Result", "uploadImage: $currentImageUri  hasil $displayResult")
+                    startActivity(intent)
                 }
+            } catch (e: HttpException) {
+                val errorBody = e.response()?.errorBody()?.string()
+                Log.e("Upload Error", "HTTP error: $errorBody")
             }
-        } ?: run {
-            Toast.makeText(this, "No image selected.", Toast.LENGTH_SHORT).show()
         }
     }
 

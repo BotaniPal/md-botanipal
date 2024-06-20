@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.botanipal.botanipal.BuildConfig
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.adapter.ForumAdapter
+import com.botanipal.botanipal.adapter.PriceAdapter
 import com.botanipal.botanipal.adapter.TopCommodityAdapter
 import com.botanipal.botanipal.data.model.Commodity
 import com.botanipal.botanipal.data.model.Topics
@@ -23,6 +24,7 @@ import com.botanipal.botanipal.data.api.ApiConfig
 import com.botanipal.botanipal.data.response.WeatherResponse
 import com.botanipal.botanipal.databinding.FragmentHomeBinding
 import com.botanipal.botanipal.ui.ViewModelFactory
+import com.botanipal.botanipal.ui.price.PriceViewModel
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
 import retrofit2.Call
@@ -42,18 +44,24 @@ class HomeFragment : Fragment() {
     private var lon: Float? = null
     private lateinit var locationString : String
 
+    private val viewModel: HomeViewModel by lazy {
+        ViewModelFactory.getInstance(requireActivity().application).create(HomeViewModel::class.java)
+    }
+
+    private val priceViewModel: PriceViewModel by lazy {
+        ViewModelFactory.getInstance(requireActivity().application).create(PriceViewModel::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelFactory.getInstance(requireActivity().application).create(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        commodityAdapter = TopCommodityAdapter(getCommodities())
+        commodityAdapter = TopCommodityAdapter(emptyList())
         topicAdapter = ForumAdapter(getTopics())
         retrieveLocation()
 
@@ -86,6 +94,17 @@ class HomeFragment : Fragment() {
 //            findNavController().navigate(R.id.navigation_bookmark)
         }
 
+        observeViewModel()
+
+        priceViewModel.isLoadingCommodity.observe(viewLifecycleOwner) {
+//            progressBar.visibility = if (it) View.VISIBLE else View.GONE
+        }
+
+        if (priceViewModel.listCommodity.value.isNullOrEmpty()) {
+            observeViewModel()
+            getCommodities()
+        }
+
         return root
     }
 
@@ -105,14 +124,14 @@ class HomeFragment : Fragment() {
 
                         getWeatherData()
 
-                        Toast.makeText(requireContext(), "Location: $locationString", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(requireContext(), "Location: $locationString", Toast.LENGTH_SHORT).show()
                         Log.d("Location", locationString)
                     } ?:
-                    Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
                     Log.d("Location", "Location not found")
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                     Log.e("Location", "Error: ${e.message}")
                 }
         } else {
@@ -130,62 +149,66 @@ class HomeFragment : Fragment() {
         }
 
     private fun getWeatherData() {
-        val apiService = ApiConfig.getWeatherApiService()
-        apiService.getCurrentWeather(BuildConfig.API_WEATHER, locationString).enqueue(object : Callback<WeatherResponse> {
-            override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
-                if (response.isSuccessful) {
-                    val weatherResponse = response.body()
-                    val temp = "${weatherResponse?.current?.temp_c}°C"
-                    Log.d("Weather", "Response: $weatherResponse")
-                    Log.d("Weather", "Temperature: $temp")
-                    weatherResponse?.let {
-                        binding.tvDegrees.text = temp
-                        binding.tvWeather.text = it.current.condition.text
-                        binding.tvLocation.text= it.location.name
-                        Glide.with(this@HomeFragment)
-                            .load("https:${it.current.condition.icon}")
-                            .into(binding.ivWeather)
-                    }
-                } else {
-                    Log.e("Weather", "Error: ${response.message()}")
-                }
-            }
+        viewModel.getWeather(locationString)
+        viewModel.weatherData.observe(viewLifecycleOwner) {response ->
+            val temp = "${response?.current?.temp_c}°C"
+            Log.d("WeatherHome", "Response: $response")
+            Log.d("WeatherHome", "Temperature: $temp")
+            binding.tvDegrees.text = temp
+            binding.tvWeather.text = response?.current?.condition?.text
+            binding.tvLocation.text= response?.location?.name
+            Glide.with(this@HomeFragment)
+                .load("https:${response?.current?.condition?.icon}")
+                .into(binding.ivWeather)
 
-            override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
-                Log.e("Weather", "Error: ${t.message}")
-            }
-        })
+        }
+    }
+
+    private fun observeViewModel() {
+        priceViewModel.listCommodity.observe(viewLifecycleOwner) {commodity ->
+//            progressBar.visibility = View.GONE
+            commodityAdapter.updateCommodities(commodity)
+            Log.d("PriceFragment", "observeViewModel: $commodity")
+        }
+
+        priceViewModel.isLoadingCommodity.observe(viewLifecycleOwner) {
+//            progressBar.visibility = if (it) View.VISIBLE else View.GONE
+        }
+
+        priceViewModel.getListPrice()
+
     }
 
     private fun getCommodities(): ArrayList<Commodity> {
         val commodityPhoto = resources.obtainTypedArray(R.array.commodity_photos)
         val commodityNames = resources.getStringArray(R.array.commodity_name)
-        val commodityPrices = resources.getStringArray(R.array.commodity_price)
         val listCommodity = ArrayList<Commodity>()
         for (position in commodityNames.indices) {
-            val commodity = Commodity(
-                commodityPhoto.getResourceId(position, -1),
-                commodityNames[position],
-                commodityPrices[position]
+            val commodityName = commodityNames[position]
+            val commodityPrice = when (commodityName) {
+                "Bawang Merah" -> priceViewModel.bawangPrice.value ?: 0
+                "Cabe Rawit Merah" -> priceViewModel.cabePrice.value ?: 0
+                "Jagung" -> priceViewModel.jagungPrice.value ?: 0
+                "Kacang" -> priceViewModel.kacangPrice.value ?: 0
+                "Kedelai" -> priceViewModel.kedelaiPrice.value ?: 0
+                "Kentang" -> priceViewModel.kentangPrice.value ?: 0
+                "Kol" -> priceViewModel.kolPrice.value ?: 0
+                "Tomat" -> priceViewModel.tomatPrice.value ?: 0
+                else -> 0
+            }
+            listCommodity.add(
+                Commodity(
+                    commodityPhoto.getResourceId(position, -1),
+                    commodityName,
+                    commodityPrice
+                )
             )
-            listCommodity.add(commodity)
         }
         commodityPhoto.recycle()
 
         return listCommodity
-
-        // Replace with your data fetching logic
-//        return listOf(
-//            Commodity("@","Bawang merah", "Rp 8,238/kg"),
-//            Commodity("Cabe Rawit Merah", "Rp 7,500/kg"),
-//            Commodity("Jagung", "Rp 9,000/kg"),
-//            Commodity("Kacang Tanah", "Rp 6,800/kg"),
-//            Commodity("Kedelai", "Rp 1,500/kg"),
-//            Commodity("Kentang", "Rp 12,500/kg"),
-//            Commodity("Kol", "Rp 10,000/kg"),
-//            Commodity("Tomat", "Rp 15,000/kg"),
-//        )
     }
+
 
     private fun getTopics(): List<Topics> {
         // Replace with your data fetching logic

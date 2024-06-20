@@ -14,7 +14,7 @@ object Injection {
         val pref = provideUserPreference(context)
         val retrofit = provideRetrofit()
         val apiService = provideApiService(retrofit)
-        return UserRepository.getInstance(apiService, pref)
+        return UserRepository.getInstance(apiService,pref)
     }
 
     private fun provideRetrofit(): Retrofit {

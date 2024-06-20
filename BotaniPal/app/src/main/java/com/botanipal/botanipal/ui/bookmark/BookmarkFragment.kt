@@ -18,17 +18,22 @@ import com.botanipal.botanipal.adapter.ChatSectionPagerAdapter
 import com.botanipal.botanipal.adapter.PlantAdapter
 import com.botanipal.botanipal.data.response.ScanData
 import com.botanipal.botanipal.databinding.FragmentBookmarkBinding
+import com.botanipal.botanipal.ui.ViewModelFactory
 import com.botanipal.botanipal.ui.scan.ResultActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class BookmarkFragment : Fragment() {
-    private val viewModel: BookmarkViewModel by viewModels()
+
     private var _binding: FragmentBookmarkBinding? = null
 
     private val binding get() = _binding
     private lateinit var adapter: PlantAdapter
     private lateinit var progressBar: ProgressBar
+
+    private val viewModel: BookmarkViewModel by viewModels(){
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,6 +58,11 @@ class BookmarkFragment : Fragment() {
 //        viewModel.
 
         viewModel.fetchBookmark()
+
+        viewModel.bookmark.observe(viewLifecycleOwner) { bookmark ->
+            progressBar.visibility = View.GONE
+            adapter.updatePlants(bookmark)
+        }
 
     }
 

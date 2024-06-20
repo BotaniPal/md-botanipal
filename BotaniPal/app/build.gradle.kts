@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.camera.core)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.firebase.auth.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,6 +71,7 @@ dependencies {
     implementation(libs.firebase.database)
 
     implementation(libs.firebase.ui.database)
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation(libs.glide)
 
     val cameraxVersion = "1.3.3"
@@ -86,4 +88,6 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation(libs.androidx.datastore.preferences)
+
+    implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
 }

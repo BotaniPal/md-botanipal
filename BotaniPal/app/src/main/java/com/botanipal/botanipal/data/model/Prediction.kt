@@ -4,12 +4,16 @@ import android.net.Uri
 import com.google.gson.annotations.SerializedName
 
 data class Prediction(
-    @field:SerializedName("imageUrl")
-    val imageUrl: String,
 
-    @field:SerializedName("prediction")
+    @SerializedName("predictionId")
+    val predictionId: String,
+
+    @SerializedName("prediction")
     val prediction: String,
 
-    @field:SerializedName("predictionId")
-    val predictionId: String
+    @SerializedName("imageUrl")
+    val imageUrl: String,
+
+    @SerializedName("predictionType")
+    val predictionType: String
 )

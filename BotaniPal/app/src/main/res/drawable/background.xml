@@ -9,7 +9,7 @@
             android:type="radial"
             android:centerX="80%"
             android:centerY="100%"
-            android:gradientRadius="350dp" />
+            android:gradientRadius="500dp" />
         </shape>
     </item>
 

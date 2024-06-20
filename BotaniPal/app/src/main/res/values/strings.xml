@@ -50,6 +50,24 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="bawang_photo">Bawang Photo</string>
+    <string name="bawang_merah_title">Bawang Merah</string>
+    <string name="rp">Rp</string>
+    <string name="cabe_photo">Cabe Photo</string>
+    <string name="cabe_rawit_merah_title">Cabe Rawit Merah</string>
+    <string name="kg">/kg</string>
+    <string name="jagung_photo">Jagung Photo</string>
+    <string name="jagung_title">Jagung</string>
+    <string name="kacang_photo">Kacang Photo</string>
+    <string name="kacang_tanah_title">Kacang Tanah</string>
+    <string name="kedelai_photo">Kedelai Photo</string>
+    <string name="kedelai_title">Kedelai</string>
+    <string name="kentang_photo">Kentang Photo</string>
+    <string name="kentang_title">Kentang</string>
+    <string name="kol_photo">Kol Photo</string>
+    <string name="kol_title">Kol</string>
+    <string name="tomat_photo">Tomat Photo</string>
+    <string name="tomat_title">Tomat</string>
 
     <integer-array name="commodity_photos">
         <item>@drawable/bawang</item>

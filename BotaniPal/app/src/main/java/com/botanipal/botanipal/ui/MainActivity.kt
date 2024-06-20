@@ -21,10 +21,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.databinding.ActivityMainBinding
+import com.botanipal.botanipal.ui.login.LoginActivity
 import com.botanipal.botanipal.ui.profile.ProfileActivity
 import com.botanipal.botanipal.ui.settings.SettingsActivity
+
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -36,6 +39,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AndroidThreeTen.init(this)
+
+//        viewModel.getSession().observe(this) { session ->
+//            if (!session.isLogin) {
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                finish()
+//            }
+//        }
 
         val navBottomView: BottomNavigationView = binding.bottomNavigationView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)

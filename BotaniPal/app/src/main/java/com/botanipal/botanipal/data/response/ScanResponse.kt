@@ -4,24 +4,24 @@ import com.google.gson.annotations.SerializedName
 
 data class ScanResponse(
 
-	@field:SerializedName("data")
-	val data: ScanData? = null,
+	@SerializedName("data")
+	val data: ScanData = ScanData(),
 
-	@field:SerializedName("error")
+	@SerializedName("error")
 	val error: Any? = null,
 
-	@field:SerializedName("message")
+	@SerializedName("message")
 	val message: String? = null
 )
 
 data class ScanData(
 
-	@field:SerializedName("imageUrl")
+	@SerializedName("imageUrl")
 	val imageUrl: String? = null,
 
-	@field:SerializedName("prediction")
-	val prediction: String? = null,
+	@SerializedName("prediction")
+	val prediction: String = "",
 
-	@field:SerializedName("predictionId")
+	@SerializedName("predictionId")
 	val predictionId: String? = null
 )

@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background_auth"
     tools:context=".ui.login.LoginActivity">
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:text="Welcome to"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/green"
+            android:textColor="?attr/colorPrimary"
             android:layout_marginBottom="-12dp"  />
 
         <TextView
@@ -34,7 +34,7 @@
             android:text="BotaniPal"
             android:textSize="48sp"
             android:textStyle="bold"
-            android:textColor="@color/green" />
+            android:textColor="?attr/colorPrimary" />
 
     </LinearLayout>
 
@@ -57,11 +57,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
+                android:text="Login"
                 android:textSize="36sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:padding="8dp"
                 android:hint="Insert your username"
                 android:drawablePadding="8dp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -80,10 +80,11 @@
                 android:id="@+id/password"
                 android:background="@drawable/green_border"
                 android:layout_marginTop="20dp"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:hint="Insert your password"
                 android:drawablePadding="8dp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <Button
                 android:id="@+id/register_button"
@@ -91,7 +92,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="#003A18"
-                android:text="Register"
+                android:text="Login"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
                 app:cornerRadius="50dp"/>
@@ -105,7 +106,7 @@
                 android:padding="8dp"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
         </LinearLayout>
 

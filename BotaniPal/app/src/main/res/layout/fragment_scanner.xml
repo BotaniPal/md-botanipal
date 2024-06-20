@@ -7,65 +7,57 @@
     tools:context=".ui.scan.ScannerFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/scanType"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="16dp"
-            app:cornerRadius="15dp"
-            android:text="Scan Plant Type" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/just_logo" />
 
-        <Button
-            android:id="@+id/scanDisease"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            app:cornerRadius="15dp"
-            android:backgroundTint="@color/danger_600"
-            android:text="Scan Plant Disease" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+            <Button
+                android:id="@+id/scanType"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:text="Scan Plant Type"
+                android:textSize="16sp"
+                app:cornerRadius="15dp" />
+
+            <Button
+                android:id="@+id/scanDisease"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="@color/danger_600"
+                android:text="Scan Plant Disease"
+                android:textSize="16sp"
+                app:cornerRadius="15dp" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:autofillHints="Find your plant"
-        android:background="@drawable/search_bg"
-        android:drawableStart="@drawable/magnifying_glass"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/icon"
-        android:hint="Find your plant"
-        android:inputType="textFilter"
-        android:padding="12dp"
-        android:textColorHint="@color/icon"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHistoryScan"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:fadeScrollbars="true"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
 
 

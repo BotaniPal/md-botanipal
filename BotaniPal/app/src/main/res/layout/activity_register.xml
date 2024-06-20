@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- res/layout/activity_register.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background_auth"
     tools:context=".ui.register.RegisterActivity">
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:text="Welcome to"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/green"
+            android:textColor="?attr/colorPrimary"
             android:layout_marginBottom="-12dp"  />
 
         <TextView
@@ -34,7 +34,7 @@
             android:text="BotaniPal"
             android:textSize="48sp"
             android:textStyle="bold"
-            android:textColor="@color/green" />
+            android:textColor="?attr/colorPrimary" />
 
     </LinearLayout>
 
@@ -57,11 +57,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/register"
+                android:text="Register"
                 android:textSize="36sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -69,10 +69,11 @@
                 android:id="@+id/username"
                 android:background="@drawable/green_border"
                 android:layout_marginTop="40dp"
+                android:inputType="textPersonName"
                 android:padding="8dp"
                 android:hint="Insert your username"
                 android:drawablePadding="8dp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -80,10 +81,11 @@
                 android:id="@+id/email"
                 android:background="@drawable/green_border"
                 android:layout_marginTop="20dp"
+                android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:hint="Insert your email"
                 android:drawablePadding="8dp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -91,10 +93,11 @@
                 android:id="@+id/password"
                 android:background="@drawable/green_border"
                 android:layout_marginTop="20dp"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:hint="Insert your password"
                 android:drawablePadding="8dp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -102,10 +105,11 @@
                 android:id="@+id/comfirm_password"
                 android:background="@drawable/green_border"
                 android:layout_marginTop="20dp"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:hint="Insert your confirm password"
                 android:drawablePadding="8dp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
             <Button
                 android:id="@+id/register_button"
@@ -127,7 +131,7 @@
                 android:padding="8dp"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
-                android:textColor="@color/green"/>
+                android:textColor="?attr/colorPrimary"/>
 
         </LinearLayout>
 

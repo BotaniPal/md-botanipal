@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -22,9 +23,12 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.api.ApiConfig
+import com.botanipal.botanipal.data.api.UserRepository
+import com.botanipal.botanipal.data.di.Injection
 import com.botanipal.botanipal.databinding.ActivityCameraTypeBinding
 import com.botanipal.botanipal.helper.createCustomTempFile
 import com.botanipal.botanipal.helper.uriToFile
+import com.botanipal.botanipal.ui.ViewModelFactory
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -42,19 +46,17 @@ class CameraTypeActivity : AppCompatActivity() {
 
     private lateinit var prediction: Prediction
 
+    private val viewModel by viewModels<ScannerViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCameraTypeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setSupportActionBar(binding.toolbar)
-
-//        val navController = findNavController(R.id.nav_host_fragment_content_camera_type2)
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        prediction = Prediction(" ", " ", " ")
+        prediction = Prediction(" ", " ", " ", "Type")
 
         binding.switchCamera.setOnClickListener {
             cameraSelector =
@@ -69,8 +71,6 @@ class CameraTypeActivity : AppCompatActivity() {
         binding.gallery.setOnClickListener {
             startGallery()
         }
-
-
     }
 
     public override fun onResume() {
@@ -145,7 +145,9 @@ class CameraTypeActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     currentImageUri = output.savedUri ?: Uri.fromFile(photoFile)
                     Log.d(TAG, "Photo saved to: ${currentImageUri.toString()}")
+//                    viewModel.uploadImage(currentImageUri)
                     uploadImage()
+
                 }
 
                 override fun onError(exc: ImageCaptureException) {
@@ -171,36 +173,29 @@ class CameraTypeActivity : AppCompatActivity() {
 
             val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
             val multipartBody = MultipartBody.Part.createFormData(
-                "file",
+                "image",
                 imageFile.name,
                 requestImageFile
             )
-            lifecycleScope.launch {
                 try {
-                    val apiService = ApiConfig.getApiService()
-                    val successResponse = apiService.uploadTypeImage(multipartBody)
-                    successResponse.data?.prediction?.let {
-                        displayResult = it
+                    viewModel.scannerType(multipartBody)
+                    viewModel.scanType.observe(this@CameraTypeActivity) {
+                        displayResult = it.prediction
 
                         val intent = Intent(this@CameraTypeActivity, ResultActivity::class.java).apply {
                             putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
                             putExtra(ResultActivity.EXTRA_RESULT, displayResult)
-                            putExtra(ResultActivity.EXTRA_ID, successResponse.data.predictionId)
+                            putExtra(ResultActivity.EXTRA_ID, it.predictionId)
+                            putExtra(ResultActivity.EXTRA_TYPE, "Type")
                         }
                         Log.d("Result", "uploadImage: $currentImageUri  hasil $displayResult")
                         startActivity(intent)
-
                     }
-//                    showLoading(false)
                 } catch (e: HttpException) {
                     val errorBody = e.response()?.errorBody()?.string()
-//                    val errorResponse = Gson().fromJson(errorBody, Response::class.java)
                     Log.e("Upload Error", "HTTP error: $errorBody")
                 }
             }
-        } ?: run {
-            Toast.makeText(this, "No image selected.", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun hideSystemUI() {

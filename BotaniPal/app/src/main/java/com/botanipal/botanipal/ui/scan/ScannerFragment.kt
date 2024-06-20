@@ -101,7 +101,7 @@ class ScannerFragment : Fragment() {
 //    }
 
     private fun startCameraType() {
-        val intent = Intent(requireContext(), CameraTypeActivity::class.java)
+        val intent = Intent(requireContext(), CameraTypeActivity()::class.java)
         launcherIntentCameraX.launch(intent)
     }
 
@@ -125,55 +125,5 @@ class ScannerFragment : Fragment() {
         }
     }
 
-//    private fun showImage() {
-//        currentImageUri?.let {
-//            Log.d("Image URI", "showImage: $it")
-//            binding.previewImageView.setImageURI(it)
-//        }
-//    }
-
-    private fun uploadImage() {
-        currentImageUri?.let { uri ->
-            val imageFile = uriToFile(uri, requireContext())
-//            Log.d("Image Classification File", "showImage: ${imageFile.path}")
-
-            Log.d("UploadImage", "URI: $uri, File: ${imageFile}, Exists: ${imageFile.exists()}")
-            if (!imageFile.exists()) {
-                Toast.makeText(requireContext(), "File does not exist.", Toast.LENGTH_SHORT).show()
-                return
-            }
-
-            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-            val multipartBody = MultipartBody.Part.createFormData(
-                "file",
-                imageFile.name,
-                requestImageFile
-            )
-            lifecycleScope.launch {
-                try {
-                    val apiService = ApiConfig.getApiService()
-                    val successResponse = apiService.uploadTypeImage(multipartBody)
-                    successResponse.data?.prediction?.let {
-                        displayResult = it
-
-                        val intent = Intent(requireContext(), ResultActivity::class.java).apply {
-                            putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
-                            putExtra(ResultActivity.EXTRA_RESULT, displayResult)
-                        }
-                        Log.d("Result", "uploadImage: $currentImageUri  hasil $displayResult")
-                        startActivity(intent)
-
-                    }
-//                    showLoading(false)
-                } catch (e: HttpException) {
-                    val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, ScanResponse::class.java)
-                    Log.e("Upload Error", "HTTP error: ${errorResponse.message}")
-                }
-            }
-        } ?: run {
-            Toast.makeText(requireContext(), "No image selected.", Toast.LENGTH_SHORT).show()
-        }
-    }
 
 }

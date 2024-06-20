@@ -23,6 +23,7 @@ class ResultActivity : AppCompatActivity() {
 //    }
     private var isSaved: Boolean = false
     private lateinit var savedButton: ExtendedFloatingActionButton
+    private lateinit var continueButton: ExtendedFloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,7 @@ class ResultActivity : AppCompatActivity() {
         val image = intent.getStringExtra(EXTRA_IMAGE_URI) ?: return
         val result = intent.getStringExtra(EXTRA_RESULT) ?: return
         val id = intent.getStringExtra(EXTRA_ID) ?: return
+        val type = intent.getStringExtra(EXTRA_TYPE) ?: return
 
         val imageUri = Uri.parse(image)
         imageUri?.let {
@@ -50,8 +52,9 @@ class ResultActivity : AppCompatActivity() {
         }
 
         savedButton = findViewById(R.id.fab_save)
+        continueButton = binding.fabContinue
 
-        bindData(Prediction(image, result, id))
+        bindData(Prediction(id, result, image, type))
 
 //        resultViewModel.fetchPredictionByUri(EXTRA_IMAGE_URI)
 
@@ -63,9 +66,10 @@ class ResultActivity : AppCompatActivity() {
 //            }
 //        }
 
-//        savedButton.setOnClickListener {
-//            toggleSaveState(image, result)
-//        }
+        // gatau bener ta ga blom nyoba aokwowk
+        continueButton.setOnClickListener {
+            finish()
+        }
 
 //        resultViewModel.getPredictionByUri(image).observe(this) { result ->
 //            isSaved = result != null
@@ -145,8 +149,9 @@ class ResultActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_IMAGE_URI = "extra_image_uri"
-        const val EXTRA_RESULT = "extra_result"
         const val EXTRA_ID = "extra_id"
+        const val EXTRA_RESULT = "extra_result"
+        const val EXTRA_IMAGE_URI = "extra_image_uri"
+       const val EXTRA_TYPE = "extra_type"
     }
 }

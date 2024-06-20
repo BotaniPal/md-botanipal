@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.botanipal.botanipal.data.model.Prediction
 import com.botanipal.botanipal.data.model.Topics
+import com.botanipal.botanipal.data.response.DataItem
 import com.botanipal.botanipal.data.response.ScanData
 import com.botanipal.botanipal.databinding.BookmarkPlantItemBinding
 import com.botanipal.botanipal.helper.PlantDiffCallback
 
-class PlantAdapter(private var prediction: List<ScanData>) : RecyclerView.Adapter<PlantAdapter.ListViewHolder>() {
+class PlantAdapter(private var prediction: List<DataItem>) : RecyclerView.Adapter<PlantAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -30,9 +31,9 @@ class PlantAdapter(private var prediction: List<ScanData>) : RecyclerView.Adapte
             }
         }
 
-        fun bind(prediction: ScanData) {
-            binding.tvBookmarkName.text = prediction.prediction
-            binding.tvBookmarkType.text = prediction.predictionId
+        fun bind(prediction: DataItem) {
+            binding.tvBookmarkName.text = prediction.predictionResult
+            binding.tvBookmarkType.text = prediction.predictionType
         }
     }
 
@@ -51,7 +52,7 @@ class PlantAdapter(private var prediction: List<ScanData>) : RecyclerView.Adapte
 
     override fun getItemCount(): Int = prediction.size
 
-    fun updatePlants(newPrediction: List<ScanData>) {
+    fun updatePlants(newPrediction: List<DataItem>) {
         val plantDiffCallback = PlantDiffCallback(this.prediction, newPrediction)
         val diffResult = DiffUtil.calculateDiff(plantDiffCallback)
         this.prediction = newPrediction
@@ -59,6 +60,6 @@ class PlantAdapter(private var prediction: List<ScanData>) : RecyclerView.Adapte
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ScanData)
+        fun onItemClicked(data: DataItem)
     }
 }

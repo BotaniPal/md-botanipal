@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class ForecastResponse(
 
 	@field:SerializedName("data")
-	val data: Data? = null,
+	val data: DataPrice,
 
 	@field:SerializedName("error")
 	val error: Any? = null,
@@ -14,8 +14,8 @@ data class ForecastResponse(
 	val message: String? = null
 )
 
-data class Data(
+data class DataPrice(
 
 	@field:SerializedName("predicted_price")
-	val predictedPrice: Int? = null
+	val predictedPrice: Int
 )

@@ -23,7 +23,7 @@ class BookmarkTabViewModel(private val repository: UserRepository) : ViewModel()
     private val _isLoadingDisease = MutableLiveData<Boolean>()
     val isLoadingDisease : LiveData<Boolean> = _isLoadingDisease
 
-    private val apiService = ApiConfig.getApiService()
+//    private val apiService = ApiConfig.getApiService()
 //    private lateinit var plantAdapter: BookmarkPlantAdapter
 
 //    private val _chat = MutableLiveData<List<ScanData>>()

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.adapter.ChatAdapter
 import com.botanipal.botanipal.adapter.PlantAdapter
+import com.botanipal.botanipal.data.response.DataItem
 import com.botanipal.botanipal.data.response.ScanData
 import com.botanipal.botanipal.databinding.FragmentBookmarkTabBinding
 import com.botanipal.botanipal.ui.scan.ResultActivity
@@ -44,7 +45,7 @@ class BookmarkTabFragment : Fragment() {
             recyclerView.adapter = plantAdapter
 
             plantAdapter.setOnItemClickCallback(object : PlantAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: ScanData) {
+                override fun onItemClicked(data: DataItem) {
                     val intent = Intent(requireContext(), ResultActivity::class.java).apply {
 //                        putExtra(ARG_TITLE, data.prediction)
                     }
