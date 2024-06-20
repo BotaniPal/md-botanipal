@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.botanipal.botanipal.R
 import com.botanipal.botanipal.adapter.FirebaseMessageAdapter
 import com.botanipal.botanipal.data.model.Message
 import com.botanipal.botanipal.databinding.ActivityForumsBinding
+import com.botanipal.botanipal.ui.ViewModelFactory
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.Firebase
@@ -21,6 +23,12 @@ class ForumsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityForumsBinding
     private lateinit var forumDB: FirebaseDatabase
     private lateinit var adapter: FirebaseMessageAdapter
+    private var username: String = " "
+    private var photoUrl: String = " "
+
+    private val viewModel by viewModels<ForumViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +43,8 @@ class ForumsActivity : AppCompatActivity() {
         binding.sendButton.setOnClickListener {
             val friendlyMessage = Message(
                 binding.etMessage.text.toString(),
-                "BotaniPal",
-                null,
+                username,
+                R.drawable.user_circle.toString(),
                 Date().time,
                 false
             )
@@ -59,7 +67,11 @@ class ForumsActivity : AppCompatActivity() {
         val options = FirebaseRecyclerOptions.Builder<Message>()
             .setQuery(messageref, Message::class.java)
             .build()
-        adapter = FirebaseMessageAdapter(options, "BotaniPal")
+
+        viewModel.getSession().observe(this) {
+            username = it.username
+        }
+        adapter = FirebaseMessageAdapter(options, username)
         binding.messageRecyclerView.adapter = adapter
     }
 

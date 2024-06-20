@@ -10,6 +10,7 @@ import com.botanipal.botanipal.data.api.UserRepository
 import com.botanipal.botanipal.data.di.Injection
 import com.botanipal.botanipal.ui.bookmark.BookmarkViewModel
 import com.botanipal.botanipal.ui.chat.ChatViewModel
+import com.botanipal.botanipal.ui.chat.forums.ForumViewModel
 import com.botanipal.botanipal.ui.home.HomeViewModel
 import com.botanipal.botanipal.ui.login.LoginViewModel
 import com.botanipal.botanipal.ui.price.PriceViewModel
@@ -37,6 +38,8 @@ class ViewModelFactory(private val repository: UserRepository, private val share
             return RegisterViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(ResultViewModel::class.java)) {
             return ResultViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom((ForumViewModel::class.java))) {
+            return ForumViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

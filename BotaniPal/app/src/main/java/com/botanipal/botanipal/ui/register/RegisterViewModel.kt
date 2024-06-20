@@ -28,6 +28,7 @@ class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
                 Log.d("RegisterViewModel", "Calling repository.register with username: $username, email: $email")
                 val response = repository.register(username, email, password, confirmPassword)
                 Log.d("RegisterViewModel", "Register response: $response")
+                _registrationState.value = RegistrationState.Success
 
 //                try {
 //                auth.createUserWithEmailAndPassword(email, password)

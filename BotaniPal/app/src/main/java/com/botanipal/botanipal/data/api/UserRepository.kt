@@ -102,7 +102,7 @@ class UserRepository private constructor(
 
         Log.d("userrepository", "$name $email $password $confirmPassword")
         val registerRequest = RegisterRequest(name, email, password, confirmPassword)
-        return apiService.registerUser(registerRequest)
+        return ApiConfig.getApiService().registerUser(registerRequest)
     }
 
     suspend fun login(username: String, password: String): LoginResponse {
