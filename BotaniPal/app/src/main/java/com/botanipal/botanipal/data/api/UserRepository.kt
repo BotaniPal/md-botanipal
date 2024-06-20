@@ -39,6 +39,7 @@ class UserRepository private constructor(
     private val userPreference: UserPreference
 ) {
     var token: String = " "
+    var bookmarkId: String = " "
     private val _isSuccessful = MutableLiveData<Boolean>()
     val isSuccessful: LiveData<Boolean> = _isSuccessful
 
@@ -254,7 +255,16 @@ class UserRepository private constructor(
         token  =  runBlocking {
             userPreference.getSession().firstOrNull()?.token
         } ?: ""
-        return ApiConfig.getApiService().bookmarkPlant("Bearer $token",predictionId, prediction, imageUrl, predictionType)
+        val response = ApiConfig.getApiService().bookmarkPlant("Bearer $token",predictionId, prediction, imageUrl, predictionType)
+//        bookmarkId =
+        return response
+    }
+
+    suspend fun deleteBookmark(bookmarkId: String) {
+        token  =  runBlocking {
+            userPreference.getSession().firstOrNull()?.token
+        } ?: ""
+        return ApiConfig.getApiService().deleteBookmark("Bearer $token", bookmarkId)
     }
 
 //    suspend fun getBawangForecast(date: String) : Int {

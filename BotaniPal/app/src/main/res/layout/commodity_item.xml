@@ -13,13 +13,12 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
-    card_view:cardCornerRadius="5dp">
+    card_view:cardCornerRadius="10dp">
 
     <LinearLayout
         android:id="@+id/ll_comodity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/comodity_chip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp">

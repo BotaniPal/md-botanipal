@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 
 import com.botanipal.botanipal.data.api.UserRepository
+import com.botanipal.botanipal.data.pref.UserModel
 import com.botanipal.botanipal.data.response.WeatherResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,5 +31,9 @@ class HomeViewModel(private val repository: UserRepository) : ViewModel() {
             _weatherData.value = weatherData
         }
         Log.d("HomeViewModel", "Weather data received: ${_weatherData.value}")
+    }
+
+    fun getSession(): LiveData<UserModel>{
+        return repository.getSession().asLiveData()
     }
 }

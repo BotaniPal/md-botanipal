@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.botanipal.botanipal.R
@@ -53,6 +55,9 @@ class ChatTabFragment : Fragment() {
 
         var recyclerView: RecyclerView = view.findViewById(R.id.rv_user_follow)
         recyclerView.layoutManager = LinearLayoutManager(context)
+        val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.divider)!!)
+        recyclerView.addItemDecoration(dividerItemDecoration)
 
         val sectionNumber = arguments?.getInt(ARG_SECTION_NUMBER, 0)
         val title = arguments?.getString(ARG_TITLE) ?: "BotaniPal"

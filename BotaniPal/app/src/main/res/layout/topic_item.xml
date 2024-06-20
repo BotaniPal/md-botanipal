@@ -108,10 +108,5 @@
 
 
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:background="@color/icon"
-        android:layout_gravity="bottom"/>
 
 </androidx.cardview.widget.CardView>

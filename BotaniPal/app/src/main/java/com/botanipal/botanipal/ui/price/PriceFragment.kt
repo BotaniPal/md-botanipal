@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.botanipal.botanipal.R
@@ -46,27 +48,12 @@ class PriceFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = commodityAdapter
 
+        val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.divider)!!)
+        recyclerView.addItemDecoration(dividerItemDecoration)
+
         observeViewModel()
-//        getCommodities()
-//        binding?.bawangCardView?.visibility = View.VISIBLE
-//        binding?.cabeCardView?.visibility = View.VISIBLE
-//        binding?.jagungCardView?.visibility = View.VISIBLE
-//        binding?.kacangCardView?.visibility = View.VISIBLE
-//        binding?.kedelaiCardView?.visibility = View.VISIBLE
-//        binding?.kentangCardView?.visibility = View.VISIBLE
-//        binding?.kolCardView?.visibility = View.VISIBLE
-//        binding?.tomatCardView?.visibility = View.VISIBLE
 
-
-//        commodityAdapter = PriceAdapter(getCommodities())
-
-
-//        viewModel.listCommodity.observe(viewLifecycleOwner) {
-//            progressBar.visibility = View.GONE
-//            commodityAdapter.updateCommodity(getCommodities())
-//
-////            commodityAdapter = PriceAdapter(getCommodities())
-//        }
 
         viewModel.isLoadingCommodity.observe(viewLifecycleOwner) {
             progressBar.visibility = if (it) View.VISIBLE else View.GONE
@@ -77,57 +64,9 @@ class PriceFragment : Fragment() {
             getCommodities()
         }
 
-//            binding?.tvBawangPrice?.text = viewModel.bawangPrice.value.toString()
-//            binding?.tvCabePrice?.text = viewModel.cabePrice.value.toString()
-//            binding?.tvJagungPrice?.text = viewModel.jagungPrice.value.toString()
-//            binding?.tvKacangPrice?.text = viewModel.kacangPrice.value.toString()
-//            binding?.tvKedelaiPrice?.text = viewModel.kedelaiPrice.value.toString()
-//            binding?.tvKentangPrice?.text = viewModel.kentangPrice.value.toString()
-//            binding?.tvKolPrice?.text = viewModel.kolPrice.value.toString()
-//            binding?.tvTomatPrice?.text = viewModel.tomatPrice.value.toString()
-//
-//            binding?.bawangCardView?.visibility = View.VISIBLE
-//            binding?.cabeCardView?.visibility = View.VISIBLE
-//            binding?.jagungCardView?.visibility = View.VISIBLE
-//            binding?.kacangCardView?.visibility = View.VISIBLE
-//            binding?.kedelaiCardView?.visibility = View.VISIBLE
-//            binding?.kentangCardView?.visibility = View.VISIBLE
-//            binding?.kolCardView?.visibility = View.VISIBLE
-//            binding?.tomatCardView?.visibility = View.VISIBLE
-
-
-
-//        }
-
-//        viewModel.isSuccessful.observe(viewLifecycleOwner) {
-//            binding?.bawangCardView?.visibility = View.VISIBLE
-//            val bawang = viewModel.bawangPrice.value.toString()
-//            if (bawang != null) {
-//                binding?.tvBawangPrice?.text = bawang
-//            } else {
-//                binding?.tvBawangPrice?.text = "0"
-//            }
-////            binding?.tvBawangPrice?.text = viewModel.bawangPrice.value.toString()
-//            progressBar.visibility = View.GONE
-//
-//        }
-
-
     }
 
     private fun observeViewModel() {
-//        try {
-//            with(viewModel) {
-//                getBawang()
-//                getCabe()
-//                getJagung()
-//                getKacang()
-//                getKedelai()
-//                getKentang()
-//                getKol()
-//                getTomat()
-//                getListPrice()
-
                 viewModel.listCommodity.observe(viewLifecycleOwner) {commodity ->
                     progressBar.visibility = View.GONE
                     commodityAdapter.updateCommodity(commodity)
@@ -140,15 +79,6 @@ class PriceFragment : Fragment() {
 
         viewModel.getListPrice()
 
-
-//            } catch (e: Exception) {
-//                Log.e("PriceFragment", "observeViewModel: ${e.message}", e)
-//
-//        } catch (e: HttpException) {
-//            val errorBody = e.response()?.errorBody()?.string()
-//            Log.e("PriceFragment", "observeViewModel: $errorBody")
-//        }
-//        Log.d("PriceFragment", "observeViewModel: ${viewModel.bawangPrice.value}")
     }
 
     private fun getCommodities(): List<Commodity> {

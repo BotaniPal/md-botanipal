@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.botanipal.botanipal" />
-                  <option name="mobileSdkAppId" value="1:174987794710:android:9325f60eb3587a08769837" />
-                  <option name="projectId" value="botanipal-bdaa5" />
-                  <option name="projectNumber" value="174987794710" />
+                  <option name="mobileSdkAppId" value="1:251567357348:android:e5d03458a9cb85a106d531" />
+                  <option name="projectId" value="backend-nodejs-tes" />
+                  <option name="projectNumber" value="251567357348" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -71,6 +71,7 @@ class CameraTypeActivity : AppCompatActivity() {
         binding.gallery.setOnClickListener {
             startGallery()
         }
+
     }
 
     public override fun onResume() {
