@@ -1,0 +1,330 @@
+<!-- res/layout/activity_main.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:background="@drawable/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llGreeting"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center|end"
+                android:gravity="end|center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:weightSum="1">
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|fill_horizontal|end"
+                        android:text="Hello, "
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/tvGreetingName"
+                        android:layout_width="219dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|fill_horizontal|end"
+                        tools:text="Andrea!"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="24sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingEnd="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="5dp">
+
+                            <TextView
+                                android:id="@+id/tvDegrees"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:paddingStart="0dp"
+                                android:paddingEnd="8dp"
+                                android:text="27°"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvWeather"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Sunny"
+                                android:textColor="?attr/colorOnSecondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Sukolilo"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivWeather"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/cloud_sun" />
+                </LinearLayout>
+
+
+                <!--            <TextView-->
+                <!--                android:id="@+id/tvWeather"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:layout_weight="1"-->
+                <!--                android:gravity="center_vertical|end"-->
+                <!--                android:text="27° Cloudy\nSukolilo"-->
+                <!--                android:textSize="16sp"-->
+                <!--                android:textColor="?attr/colorOnSecondary"-->
+                <!--                android:drawablePadding="10dp"-->
+                <!--                android:padding="16dp"-->
+                <!--                app:drawableEndCompat="@drawable/cloud_sun" />-->
+            </LinearLayout>
+
+            <!--        <androidx.appcompat.widget.Toolbar-->
+            <!--            android:id="@+id/toolbar"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:background="#00FF0000"-->
+            <!--            app:layout_scrollFlags="noScroll">-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/etSearch"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="16dp"-->
+            <!--                android:autofillHints="Find your plant"-->
+            <!--                android:background="@drawable/search_bg"-->
+            <!--                android:drawableStart="@drawable/magnifying_glass"-->
+            <!--                android:drawablePadding="8dp"-->
+            <!--                android:drawableTint="@color/icon"-->
+            <!--                android:hint="Find your plant"-->
+            <!--                android:textColorHint="@color/icon"-->
+            <!--                android:inputType="textFilter"-->
+            <!--                android:padding="12dp" />-->
+            <!--        </androidx.appcompat.widget.Toolbar>-->
+
+            <LinearLayout
+                android:id="@+id/llDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:weightSum="2">
+
+                <LinearLayout
+                    style="?android:attr/buttonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="16dp"
+                    android:weightSum="3">
+
+                    <Button
+                        android:id="@+id/btnPlantType"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="115dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="top"
+                        android:drawableTop="@drawable/plant_fill_green"
+                        android:drawableTint="?attr/colorPrimary"
+                        android:text="Plant Type\nDetection"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnPlantDisease"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="115dp"
+                        android:layout_height="90dp"
+                        android:drawableTop="@drawable/plant_fill_red"
+                        android:text="Plant Disease\nDetection"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnCommodity"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="115dp"
+                        android:layout_height="90dp"
+                        android:drawableTop="@drawable/tag_fill"
+                        android:drawableTint="?attr/colorPrimary"
+                        android:text="Commodity\nPrice"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="?android:attr/buttonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <Button
+                        android:id="@+id/btnForum"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="115dp"
+                        android:layout_height="90dp"
+                        android:drawableTop="@drawable/chats_fill"
+                        android:drawableTint="?attr/colorPrimary"
+                        android:text="Forum\nDiscussion"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnChatanis"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="115dp"
+                        android:layout_height="90dp"
+                        android:drawableTop="@drawable/chat_dots_fill"
+                        android:drawableTint="?attr/colorPrimary"
+                        android:text="ChaTanis"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnBookmark"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="115dp"
+                        android:layout_height="90dp"
+                        android:drawableTop="@drawable/bookmark_simple_fill"
+                        android:drawableTint="?attr/colorPrimary"
+                        android:text="Bookmark"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="11sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llComodity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTopComodity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Top Comodity"
+                    android:fontFamily="@font/plusjakartasans"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvComodity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fadeScrollbars="true"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLatestTopic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Latest Topic"
+                    android:fontFamily="@font/plusjakartasans"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTopics"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:paddingTop="16dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
