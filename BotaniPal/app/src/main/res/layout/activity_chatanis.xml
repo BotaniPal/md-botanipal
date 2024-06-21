@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.chat.chatanis.ChatanisActivity">
+
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Search Expert, Specialist, Disease"
+        android:fontFamily="@font/plusjakartasans"
+        android:padding="12dp"
+        android:background="@drawable/search_background"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp" />
+
+    <!-- ScrollView to make the list scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Expert Item 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/expertImageView1"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/prof1"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Profile picture"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/expertNameTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thomas"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/expertSpecialtyTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="General Farmer"
+                        android:fontFamily="@font/plusjakartasans"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/expertExperienceTextView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 years"
+                            android:fontFamily="@font/plusjakartasans"/>
+
+                        <TextView
+                            android:id="@+id/expertRatingTextView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.8"
+                            android:fontFamily="@font/plusjakartasans"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/expertPriceTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 40.000"
+                        android:fontFamily="@font/plusjakartasans"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/chatButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat"
+                    android:fontFamily="@font/plusjakartasans"/>
+            </LinearLayout>
+
+            <!-- Expert Item 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/expertImageView2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/prof2"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Profile picture"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/expertNameTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carl"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/expertSpecialtyTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="General Farmer"
+                        android:fontFamily="@font/plusjakartasans"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/expertExperienceTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 years"
+                            android:fontFamily="@font/plusjakartasans"/>
+
+                        <TextView
+                            android:id="@+id/expertRatingTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.5"
+                            android:fontFamily="@font/plusjakartasans"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/expertPriceTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 35.000"
+                        android:fontFamily="@font/plusjakartasans"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/chatButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat"
+                    android:fontFamily="@font/plusjakartasans"/>
+            </LinearLayout>
+
+            <!-- Expert Item 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/expertImageView3"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/prof3"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Profile picture"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/expertNameTextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cloe"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/expertSpecialtyTextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tea Tree Specialist"
+                        android:fontFamily="@font/plusjakartasans"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/expertExperienceTextView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5 years"
+                            android:fontFamily="@font/plusjakartasans"/>
+
+                        <TextView
+                            android:id="@+id/expertRatingTextView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.9"
+                            android:fontFamily="@font/plusjakartasans"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/expertPriceTextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 50.000"
+                        android:fontFamily="@font/plusjakartasans"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/chatButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat"
+                    android:fontFamily="@font/plusjakartasans"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/expertImageView2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/prof4"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Profile picture"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/expertNameTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carl"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/expertSpecialtyTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="General Farmer"
+                        android:fontFamily="@font/plusjakartasans"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/expertExperienceTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 years"
+                            android:fontFamily="@font/plusjakartasans"/>
+
+                        <TextView
+                            android:id="@+id/expertRatingTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.5"
+                            android:fontFamily="@font/plusjakartasans"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/expertPriceTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 35.000"
+                        android:fontFamily="@font/plusjakartasans"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/chatButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/expertImageView2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/prof5"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Profile picture"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/expertNameTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carl"
+                        android:fontFamily="@font/plusjakartasans"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/expertSpecialtyTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="General Farmer"
+                        android:fontFamily="@font/plusjakartasans"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/expertExperienceTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 years"
+                            android:fontFamily="@font/plusjakartasans"/>
+
+                        <TextView
+                            android:id="@+id/expertRatingTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.5"
+                            android:fontFamily="@font/plusjakartasans"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/expertPriceTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 35.000"
+                        android:fontFamily="@font/plusjakartasans"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/chatButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat"
+                    android:fontFamily="@font/plusjakartasans"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
